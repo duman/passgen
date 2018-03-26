@@ -3,32 +3,32 @@ using namespace std;
 
 int main(const int argc, char* argv[])
 {
-	cerr << "###\n";
+	cout << "###\n";
 	if(argc > 1 && argc <= 2)
 	{
 		if(string(argv[1]) == "-h")
 		{
-			cerr << "Usage              : " << get_file_name(argv[0]) << " -<length> -<min security out of 100> -<with/out_symbols>\n";
-			cerr << "Example w/  symbols: " << get_file_name(argv[0]) << " -12 -80 -s\n";
-			cerr << "Example w/o symbols: " << get_file_name(argv[0]) << " -12 -80 -ns\n\n";
-			cerr << "Password will be automatically copied to your clipboard!\n";
-			cerr << "###\n";
+			cout << "Usage              : " << get_file_name(argv[0]) << " -<length> -<min security out of 100> -<with/out_symbols>\n";
+			cout << "Example w/  symbols: " << get_file_name(argv[0]) << " -12 -80 -s\n";
+			cout << "Example w/o symbols: " << get_file_name(argv[0]) << " -12 -80 -ns\n\n";
+			cout << "Password will be automatically copied to your clipboard!\n";
+			cout << "###\n";
 			return 1;
 		}
 		if(string(argv[1]) == "-v")
 		{
-			cerr << "Author : Tugberk Kaan Duman\n";
-			cerr << "Contact: kaan@dumanmail.com\n";
-			cerr << "Version: 1.4.2\n";
-			cerr << "###\n";
+			cout << "Author : Tugberk Kaan Duman\n";
+			cout << "Contact: kaan@dumanmail.com\n";
+			cout << "Version: 1.4.2\n";
+			cout << "###\n";
 			return 2;
 		}
 		if(string(argv[1]) == "-length" || string(argv[1]) == "-l")
 		{
-			cerr << "Try to use the command as:\n";
-			cerr << get_file_name(argv[0]) << " -8 -98 -ns # for a password that has length of 8 and security score of minimum 98 that doesn\'t include symbols.\n";
-			cerr << get_file_name(argv[0]) << " -8 -98 -s  # for a password that has length of 8 and security score of minimum 98 that doesn include symbols.\n";
-			cerr << "###\n";
+			cout << "Try to use the command as:\n";
+			cout << get_file_name(argv[0]) << " -8 -98 -ns # for a password that has length of 8 and security score of minimum 98 that doesn\'t include symbols.\n";
+			cout << get_file_name(argv[0]) << " -8 -98 -s  # for a password that has length of 8 and security score of minimum 98 that doesn include symbols.\n";
+			cout << "###\n";
 			return 2;
 		}
 	}
@@ -42,7 +42,7 @@ int main(const int argc, char* argv[])
 			if(!isdigit(raw_argument1[i]))
 			{
 				cerr << "Invalid parameters! Use -h to see how to use this program.\n";
-				cerr << "###\n";
+				cout << "###\n";
 				return 1;
 			}
 		}
@@ -51,26 +51,26 @@ int main(const int argc, char* argv[])
 			if(!isdigit(raw_argument2[i]))
 			{
 				cerr << "Invalid parameters! Use -h to see how to use this program.\n";
-				cerr << "###\n";
+				cout << "###\n";
 				return 1;
 			}
 		}
 		if(raw_argument1[0] != '-')
 		{
 			cerr << "Did you mean: " << get_file_name(argv[0]) << " -" << argv[1] << " " << raw_argument2 << " # missing dash before an argument!\n";
-			cerr << "###\n";
+			cout << "###\n";
 			return 1;
 		}
 		if(raw_argument2[0] != '-')
 		{
 			cerr << "Did you mean: " << get_file_name(argv[0]) << " " << raw_argument1 << " -" << argv[2] << " # missing dash before an argument!\n";
-			cerr << "###\n";
+			cout << "###\n";
 			return 1;
 		}
 		if(string(argv[1]).empty() || string(argv[2]).empty())
 		{
 			cerr << "Missing parameters! Use -h to see how to use this program!\n";
-			cerr << "###\n";
+			cout << "###\n";
 			return 1;
 		}
 		raw_argument1.erase(raw_argument1.begin());
@@ -96,14 +96,14 @@ int main(const int argc, char* argv[])
 			if(seconds_since_start > 50)
 			{
 				cerr << "Request timed out. Couldn't generate a password with the given parameters.\n";
-				cerr << "###\n";
+				cout << "###\n";
 				return 1;
 			}
 		}
-		cerr << "Generated password strength: " << password_score(generated_password) << "/100\n";
-		cerr << "Password symbol status     : " << boolalpha << symbols << "\n";
-		cerr << "Password has been copied to clipboard!\n";
-		cerr << "###\n";
+		cout << "Generated password strength: " << password_score(generated_password) << "/100\n";
+		cout << "Password symbol status     : " << boolalpha << symbols << "\n";
+		cout << "Password has been copied to clipboard!\n";
+		cout << "###\n";
 		return 0;
 	}
 	if(argc > 3 && argc <= 4)
@@ -116,7 +116,7 @@ int main(const int argc, char* argv[])
 			if(!isdigit(raw_argument1[i]))
 			{
 				cerr << "Invalid parameters! Use -h to see how to use this program.\n";
-				cerr << "###\n";
+				cout << "###\n";
 				return 1;
 			}
 		}
@@ -125,7 +125,7 @@ int main(const int argc, char* argv[])
 			if(!isdigit(raw_argument2[i]))
 			{
 				cerr << "Invalid parameters! Use -h to see how to use this program.\n";
-				cerr << "###\n";
+				cout << "###\n";
 				return 1;
 			}
 		}
@@ -134,32 +134,32 @@ int main(const int argc, char* argv[])
 			if(isdigit(raw_argument3[i]))
 			{
 				cerr << "Invalid parameters! Use -h to see how to use this program.\n";
-				cerr << "###\n";
+				cout << "###\n";
 				return 1;
 			}
 		}
 		if(raw_argument1[0] != '-')
 		{
 			cerr << "Did you mean: " << get_file_name(argv[0]) << " -" << argv[1] << " " << raw_argument2 << " " << raw_argument3 << " # missing dash before an argument!\n";
-			cerr << "###\n";
+			cout << "###\n";
 			return 1;
 		}
 		if(raw_argument2[0] != '-')
 		{
 			cerr << "Did you mean: " << get_file_name(argv[0]) << " " << raw_argument1 << " -" << argv[2] << " " << raw_argument3 << " # missing dash before an argument!\n";
-			cerr << "###\n";
+			cout << "###\n";
 			return 1;
 		}
 		if(raw_argument3[0] != '-')
 		{
 			cerr << "Did you mean: " << get_file_name(argv[0]) << " " << raw_argument1 << " " << raw_argument2 << " -" << argv[3] << " # missing dash before an argument!\n";
-			cerr << "###\n";
+			cout << "###\n";
 			return 1;
 		}
 		if(string(argv[1]).empty() || string(argv[2]).empty() || string(argv[3]).length() == 0 || string(argv[3]).empty())
 		{
 			cerr << "Missing parameters! Use -h to see how to use this program!\n";
-			cerr << "###\n";
+			cout << "###\n";
 			return 1;
 		}
 		raw_argument1.erase(raw_argument1.begin());
@@ -195,14 +195,14 @@ int main(const int argc, char* argv[])
 			if(seconds_since_start > 50)
 			{
 				cerr << "Request timed out. Couldn't generate a password with the given parameters.\n";
-				cerr << "###\n";
+				cout << "###\n";
 				return 1;
 			}
 		}
-		cerr << "Generated password strength: " << password_score(generated_password) << "/100\n";
-		cerr << "Password symbol status     : " << boolalpha << symbols << "\n";
-		cerr << "Password has been copied to clipboard!\n";
-		cerr << "###\n";
+		cout << "Generated password strength: " << password_score(generated_password) << "/100\n";
+		cout << "Password symbol status     : " << boolalpha << symbols << "\n";
+		cout << "Password has been copied to clipboard!\n";
+		cout << "###\n";
 		return 0;
 	}
 	if(argc > 4)
@@ -210,10 +210,10 @@ int main(const int argc, char* argv[])
 		cerr << "Unsupported number of parameters!\n";
 		return 1;
 	}
-	cerr << "Commands:\n";
-	cerr << "1. " << get_file_name(argv[0]) << " -length -security_level -symbol_status # Security level is XYZ out of 100\n";
-	cerr << "2. " << get_file_name(argv[0]) << " -h\n";
-	cerr << "3. " << get_file_name(argv[0]) << " -l\n";
-	cerr << "4. " << get_file_name(argv[0]) << " -v\n";
-	cerr << "###\n";
+	cout << "Commands:\n";
+	cout << "1. " << get_file_name(argv[0]) << " -length -security_level -symbol_status # Security level is XYZ out of 100\n";
+	cout << "2. " << get_file_name(argv[0]) << " -h\n";
+	cout << "3. " << get_file_name(argv[0]) << " -l\n";
+	cout << "4. " << get_file_name(argv[0]) << " -v\n";
+	cout << "###\n";
 }
