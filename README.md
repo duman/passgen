@@ -7,6 +7,10 @@ Have a nice day. :)
 
 _PS: I'm also working on a linux version, since this program doesn't actually use Windows specific headers._
 
+## Installation
+
+Go to [releases](https://github.com/tkduman/passgen/releases/) and follow the instructions given on the releases page.
+
 ## Usage
 
 passgen.exe -length_of_the_password -min_security_level_of_the_password -(s or ns)
@@ -18,6 +22,8 @@ passgen.exe -length_of_the_password -min_security_level_of_the_password -(s or n
 ## Password security level calculation
 
 I've taken [passwordmeter.com](http://www.passwordmeter.com/) as the reference. They have bunch of parameters, I've applied them in the [duman.h](https://github.com/tkduman/duman.h) library and each generated password gets scored based on these parameters from this website. My library calculation results are almost identical to the passwordmeter.
+
+You can check [length_1_million_ns.md](https://github.com/tkduman/passgen/blob/master/length_1_million_ns.md) to see how capable it is, as an example. It takes **4.2 seconds** to generating a password which is **1 million character long without symbols** and copying it to the clipboard.
 
 ## Example 1: Without Symbols
 
