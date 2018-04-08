@@ -96,7 +96,11 @@ int main(const int argc, char* argv[])
 			if(seconds_since_start > 50)
 			{
 				cerr << "Request timed out. Couldn't generate a password with the given parameters.\n";
+				cerr << "Generated password doesn't satisfy required safety level.\n";
 				cout << "###\n";
+				OpenClipboard(nullptr);
+				EmptyClipboard();
+				CloseClipboard();
 				return 1;
 			}
 		}
@@ -169,6 +173,7 @@ int main(const int argc, char* argv[])
 		auto seconds_since_start = 0;
 
 		auto symbols = false;
+		auto clipboard = true;
 
 		if(string(argv[3]) == "-nosym" || string(argv[3]) == "-ns")
 		{
@@ -180,9 +185,21 @@ int main(const int argc, char* argv[])
 			symbols = true;
 		}
 
+		if(string(argv[3]) == "-nsnc" || string(argv[3]) == "-ncns")
+		{
+			symbols = false;
+			clipboard = false;
+		}
+
+		if(string(argv[3]) == "-ncs" || string(argv[3]) == "-snc")
+		{
+			symbols = true;
+			clipboard = false;
+		}
+
 		const auto start = time(nullptr);
 		
-		auto generated_password = password_generator(first_argument, symbols, true);
+		auto generated_password = password_generator(first_argument, symbols, clipboard);
 		
 		while(password_score(generated_password) < second_argument)
 		{
@@ -195,13 +212,18 @@ int main(const int argc, char* argv[])
 			if(seconds_since_start > 50)
 			{
 				cerr << "Request timed out. Couldn't generate a password with the given parameters.\n";
+				cerr << "Generated password doesn't satisfy required safety level.\n";
 				cout << "###\n";
+				OpenClipboard(nullptr);
+				EmptyClipboard();
+				CloseClipboard();
 				return 1;
 			}
 		}
 		cout << "Generated password strength: " << password_score(generated_password) << "/100\n";
 		cout << "Password symbol status     : " << boolalpha << symbols << "\n";
-		cout << "Password has been copied to clipboard!\n";
+		if(clipboard)
+			cout << "Password has been copied to clipboard!\n";
 		cout << "###\n";
 		return 0;
 	}
