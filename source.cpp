@@ -19,7 +19,7 @@ int main(const int argc, char* argv[])
 		{
 			cout << "Author : Tugberk Kaan Duman\n";
 			cout << "Contact: kaan@dumanmail.com\n";
-			cout << "Version: 1.4.2\n";
+			cout << "Version: 1.5.0\n";
 			cout << "###\n";
 			return 2;
 		}
